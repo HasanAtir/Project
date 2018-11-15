@@ -11,7 +11,10 @@
 
  
 using namespace std;
-
+/**Random name generator to assign names to neighbouring countries
+@@param = non
+@return = string with name
+*/
 string randomNameGenerator()
 {
     srand(time(0));
@@ -56,7 +59,7 @@ int main()
     cout<<"======================================================================================================\n";
     cout<<"\n\nWelcome to Sim_Country. This game allows you to simulate your own country. But first you must name it:";
 
-
+    //Personal Information
     string leader = "";
     string country = "";
     string leader_temp;
@@ -66,12 +69,14 @@ int main()
     cin>>leader_temp;
     leader = leader_title + " " + leader_temp;
     cout<<"- Your title and name is:\n"<<leader<<endl;
+    
+  
     string north_neighbour = randomNameGenerator();
     string south_neighbour = randomNameGenerator();
     string west_neighbour = randomNameGenerator();
     string east_neighbour = randomNameGenerator();
 
-
+    //Name assignment to neighbouring countries
    /* bool same;
     do
     {
@@ -119,7 +124,7 @@ int main()
         }
     }while(!same);*/
 
-
+    //Neighbouring countries' index value to maintain stats
     int north_id = 1;
     int south_id = 2;
     int west_id = 3;
@@ -128,7 +133,7 @@ int main()
     string buffer_clear;
 
 
-
+    //Initial conditions
     int population = 1000000;   //Starting at 10 million, grows with food, falls with war and famine
     int fail_condition=population/2;
     int commerce = 10000;
@@ -142,17 +147,20 @@ int main()
     int year = 1940;
 
 
-
-    //Growth factors
+  
+    //boolean factors
     bool game_win = false;
     bool game_fail = false;
     bool in_power = true;
-
+    
+    //growth factors.
+    /*Req: pop, commercial, opinion, war score, approval*/
     double population_growth;
     double commercial_growth;
     double public_opinion = 100.0;
     cout<<north_neighbour<<endl<<south_neighbour<<endl<<west_neighbour<<endl<<east_neighbour<<endl;
-
+    
+    //Gametime
     /*while(!game_fail)
     {
         year++;
@@ -177,6 +185,8 @@ int main()
         }
         break;
     }*/
+  
+    //Game end conditions
     if(game_win)
     {
         cout<<"You now have the heighest GDP of all countries!/n/nYou have won the game!";
